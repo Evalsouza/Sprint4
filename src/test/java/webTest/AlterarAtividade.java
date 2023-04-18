@@ -47,13 +47,16 @@ public class AlterarAtividade {
          driver.findElement(By.cssSelector("input[type=email]")).sendKeys("evaluzia.souza@gmail.com");
         driver.findElement(By.cssSelector("input[type=password]")).sendKeys("asD#89447182");
         driver.findElement(By.cssSelector(".button-text > span")).click();
-        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@href=\"/pt/admin/conteudo/atividades\"]")));
+        Thread.sleep(10000);
+        driver.navigate().refresh();
+        driver.findElement(By.cssSelector(".button-text > span")).click();
+        new WebDriverWait(driver, Duration.ofSeconds(50)).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@href=\"/pt/admin/conteudo/atividades\"]")));
+        //By.xpath("//*[@href=\"/pt/admin/conteudo/atividades\"]")
         {
-            WebElement element = driver.findElement(By.xpath("//*[@href=\"/pt/admin/conteudo/atividades\"]"));
+            WebElement element = driver.findElement(By.xpath("//*[@href=\"/pt/admin/conteudo\"]"));
             Actions builder = new Actions(driver);
             builder.moveToElement(element).perform();
         }
-        //By.xpath("//*[@href=\"/pt/admin/conteudo/atividades\"]")
         {
             WebElement element = driver.findElement(By.tagName("body"));
             Actions builder = new Actions(driver);
